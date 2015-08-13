@@ -1,0 +1,1 @@
+web: ./build/install/Yosethejava/bin/Yosethejava $PORT
