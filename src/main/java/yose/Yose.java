@@ -26,7 +26,7 @@ public class Yose {
                 get("/primeFactors").to(new PowerOfTwo(gson)::prime);
                 get("/minesweeper").to((request, response) -> response.body(mineSweeper()));
                 get("/aboutme").to((request, response) -> response.body(aboutMe()));
-                get("/astroport").to((request, response) -> response.body(astroport()));
+                get("/astroport").to((request, response) -> response.body(astroport()).addHeader("content-type", "text/html"));
             }
         });
     }
