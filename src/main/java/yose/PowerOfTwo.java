@@ -56,10 +56,11 @@ public class PowerOfTwo {
     
     public static class PrimeError {
         private String notANumber;
-        private String error = "not a number";
+        private String error;
         
         public PrimeError(String notANumber){
             this.notANumber = notANumber;
+            this.error = "not a number";
         }
     }
 }
