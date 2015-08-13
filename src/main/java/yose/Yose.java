@@ -26,10 +26,22 @@ public class Yose {
                 get("/primeFactors").to(new PowerOfTwo(gson)::prime);
                 get("/minesweeper").to((request, response) -> response.body(mineSweeper()));
                 get("/aboutme").to((request, response) -> response.body(aboutMe()));
+                get("/astroport").to((request, response) -> response.body(astroport()));
             }
         });
     }
 
+    public String astroport(){
+        StringBuilder builder = new StringBuilder();
+        builder.append("<html>");
+        builder.append("<head>");
+        builder.append("<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">");
+        builder.append("</head>");
+        builder.append("<p id=\"astroport-name\"></p>");
+        builder.append("</html>");
+        return builder.toString();
+    }
+    
     public String frontPage() {
         StringBuilder builder = new StringBuilder();
         builder.append("<html>");
@@ -72,32 +84,34 @@ public class Yose {
         String[][] array = new String[8][8];
         StringBuilder builder = new StringBuilder();
         builder.append("<html>");
-        builder.append("<head>");
-            builder.append("<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">");
-            builder.append("<script type=\"text/javascript\">");
-                builder.append("function load(){");
-                    builder.append("alert('are clicked')");
-                builder.append("}");
-            builder.append("</script>");
-        builder.append("</head>");
-            builder.append("<h1 id=\"title\">Minesweeper</h1>");
-            builder.append("<p>&nbsp;</p>");
-            builder.append("<table style=\"border:1px solid #c5c5c5\">");
-            for (int x = 0; x < array.length; x++) {
-                builder.append("<tr>");
-                for (int y = 0; y < array[x].length; y++) {
-                    builder.append("<td style=\"border:1px solid #c5c5c5;border-collapse:collapse\" id=\"cell-");
-                    builder.append((x + 1) + "x");
-                    builder.append((y + 1) + "\">");
-//                    builder.append(x + 1);
-//                    builder.append("x");
-//                    builder.append(y + 1);
-                    builder.append("<a href=\"#\" onclick=\"load()\">Click Me</a>");
-                    builder.append("</td>");
+            builder.append("<head>");
+                builder.append("<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">");
+                builder.append("<script type=\"text/javascript\">");
+                    builder.append("function load(){");
+                        builder.append("alert('are clicked')");
+                    builder.append("}");
+                builder.append("</script>");
+            builder.append("</head>");
+            builder.append("<body onload=\"load()\">");
+                builder.append("<h1 id=\"title\">Minesweeper</h1>");
+                builder.append("<p>&nbsp;</p>");
+                builder.append("<table style=\"border:1px solid #c5c5c5\">");
+                for (int x = 0; x < array.length; x++) {
+                    builder.append("<tr>");
+                    for (int y = 0; y < array[x].length; y++) {
+                        builder.append("<td style=\"border:1px solid #c5c5c5;border-collapse:collapse\" id=\"cell-");
+                        builder.append((x + 1) + "x");
+                        builder.append((y + 1) + "\">");
+    //                    builder.append(x + 1);
+    //                    builder.append("x");
+    //                    builder.append(y + 1);
+                        builder.append("<a href=\"#\" onclick=\"load()\">Click Me</a>");
+                        builder.append("</td>");
+                    }
+                    builder.append("</tr>");
                 }
-                builder.append("</tr>");
-            }
-            builder.append("</table>");
+                builder.append("</table>");
+            builder.append("</body>");
         builder.append("</html>");
         return builder.toString();
     }
