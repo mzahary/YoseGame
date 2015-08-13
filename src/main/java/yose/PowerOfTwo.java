@@ -36,7 +36,7 @@ public class PowerOfTwo {
 
                 }
                 response.contentType(JSON).body(gson.toJson(new Prime(number, decomposition)));
-            }catch(Exception e){
+            }catch(NumberFormatException e){
                 response.contentType(JSON).body(gson.toJson(new PrimeError(numString)));
             }            
         }
