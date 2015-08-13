@@ -41,7 +41,7 @@ public class Yose {
         for(int x=1;x<4;x++){
             builder.append("<div id=\"gate-"+x+">");
                 builder.append("<div id=\"ship-"+x+">");
-                    builder.append("Ship " + 1);
+                    builder.append("Ship " + x);
                 builder.append("</div>");
             builder.append("</div>");
         }
