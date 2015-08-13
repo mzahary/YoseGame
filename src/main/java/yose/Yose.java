@@ -76,7 +76,7 @@ public class Yose {
             builder.append("<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">");
             builder.append("<script type=\"text/javascript\">");
                 builder.append("function load(){");
-                
+                    builder.append("alert('are clicked')");
                 builder.append("}");
             builder.append("</script>");
         builder.append("</head>");
@@ -89,9 +89,10 @@ public class Yose {
                     builder.append("<td style=\"border:1px solid #c5c5c5;border-collapse:collapse\" id=\"cell-");
                     builder.append((x + 1) + "x");
                     builder.append((y + 1) + "\">");
-                    builder.append(x + 1);
-                    builder.append("x");
-                    builder.append(y + 1);
+//                    builder.append(x + 1);
+//                    builder.append("x");
+//                    builder.append(y + 1);
+                    builder.append("<a href=\"#\" onclick=\"load()\">Click Me</a>");
                     builder.append("</td>");
                 }
                 builder.append("</tr>");
