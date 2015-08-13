@@ -23,8 +23,9 @@ public class PowerOfTwo {
 //        String number = request.parameter("number");
 
         if (request.parameter("number") != null) {
+            String numString = request.parameter("number");
             try{
-                number = Integer.parseInt(request.parameter("number"));
+                number = Integer.parseInt(numString);
                 double prime = number;
                 decomposition = new ArrayList<Integer>();
                 int i = 0;
@@ -36,7 +37,7 @@ public class PowerOfTwo {
                 }
                 response.contentType(JSON).body(gson.toJson(new Prime(number, decomposition)));
             }catch(Exception e){
-                response.contentType(JSON).body(gson.toJson(new PrimeError(number)));
+                response.contentType(JSON).body(gson.toJson(new PrimeError(numString)));
             }            
         }
         
@@ -54,11 +55,11 @@ public class PowerOfTwo {
     }
     
     public static class PrimeError {
-        private int number;
-        private String error = "";
+        private String notANumber;
+        private String error = "not a number";
         
-        public PrimeError(int number){
-            this.number = number;
+        public PrimeError(String notANumber){
+            this.notANumber = notANumber;
         }
     }
 }
