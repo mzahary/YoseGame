@@ -21,6 +21,9 @@ public class PowerOfTwo {
 	 public void prime(Request request, Response response) throws Exception {
 		String number = request.parameter("number");
 		StringBuilder result = new StringBuilder();
+                result.append("number:"+number);
+                result.append(",");
+                result.append("decomposition:[");
 		if(number!=null){
 			int prime = Integer.parseInt(number);
 			int i = 0;
@@ -36,6 +39,7 @@ public class PowerOfTwo {
 				}
 			}
 		}
+                result.append("]");
         response.contentType(JSON).body(gson.toJson(result));
     }
 	
