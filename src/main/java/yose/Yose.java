@@ -38,6 +38,13 @@ public class Yose {
         builder.append("<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">");
         builder.append("</head>");
         builder.append("<p id=\"astroport-name\"></p>");
+        for(int x=1;x<4;x++){
+            builder.append("<div id=\"gate-"+x+">");
+                builder.append("<div id=\"ship-"+x+">");
+                    builder.append("Ship " + 1);
+                builder.append("</div>");
+            builder.append("</div>");
+        }
         builder.append("</html>");
         return builder.toString();
     }
