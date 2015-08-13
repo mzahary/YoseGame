@@ -21,7 +21,7 @@ public class PowerOfTwo {
 	 public void prime(Request request, Response response) throws Exception {
 		String number = request.parameter("number");
 		StringBuilder result = new StringBuilder();
-                result.append("\"number:\""+number);
+                result.append("\"number\":"+number);
                 result.append(",");
                 result.append("\"decomposition\"");
                 result.append(":[");
