@@ -19,22 +19,27 @@ public class PowerOfTwo {
         this.gson = gson;
     }
 
-    public void prime(Request request, Response response) throws Exception {
+    public void prime(Request request, Response response){
 //        String number = request.parameter("number");
 
         if (request.parameter("number") != null) {
-            number = Integer.parseInt(request.parameter("number"));
-            double prime = number;
-            decomposition = new ArrayList<Integer>();
-            int i = 0;
+            try{
+                number = Integer.parseInt(request.parameter("number"));
+                double prime = number;
+                decomposition = new ArrayList<Integer>();
+                int i = 0;
 
-            while (prime != 1) {
-                decomposition.add(2);
-                prime = prime / 2;
+                while (prime != 1) {
+                    decomposition.add(2);
+                    prime = prime / 2;
 
-            }
+                }
+                response.contentType(JSON).body(gson.toJson(new Prime(number, decomposition)));
+            }catch(Exception e){
+                response.contentType(JSON).body(gson.toJson(new PrimeError(number)));
+            }            
         }
-        response.contentType(JSON).body(gson.toJson(new Prime(number, decomposition)));
+        
     }
 
     public static class Prime {
@@ -46,5 +51,14 @@ public class PowerOfTwo {
             this.decomposition = decomposition;
         }
 //        public final boolean alive = true;
+    }
+    
+    public static class PrimeError {
+        private int number;
+        private String error = "";
+        
+        public PrimeError(int number){
+            this.number = number;
+        }
     }
 }
